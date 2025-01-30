@@ -20,7 +20,17 @@ def group_players_by_team_id(json_file_path: str) -> dict:
 # Example usage
 if __name__ == "__main__":
     regions = ["europe", "americas", "se_asia", "china"]
-    json_file_path = f"json/{regions[0]}_leaderboard.json"
+    try:
+        region_index = int(
+            input(
+                "Enter region number (1: europe, 2: americas, 3: se_asia, 4: china): "
+            ).strip()
+        )
+        region = regions[region_index + 1]
+    except (ValueError, IndexError):
+        print("Invalid region number. Please enter a valid number.")
+        exit(1)
+    json_file_path = f"json/{region}_leaderboard.json"
     teams = group_players_by_team_id(json_file_path)
 
     sorted_teams = sorted(
