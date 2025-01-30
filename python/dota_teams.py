@@ -4,9 +4,9 @@ from collections import defaultdict
 
 def group_players_by_team_id(json_file_path: str) -> dict:
     with open(json_file_path, "r") as file:
-        data = json.load(file)
+        data: dict = json.load(file)
 
-    leaderboard = data.get("leaderboard", [])
+    leaderboard: list[dict] = data.get("leaderboard", [])
     teams = defaultdict(list)
 
     for player in leaderboard:
