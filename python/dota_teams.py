@@ -26,7 +26,7 @@ if __name__ == "__main__":
                 "Enter region number (1: europe, 2: americas, 3: se_asia, 4: china): "
             ).strip()
         )
-        region = regions[region_index + 1]
+        region = regions[region_index - 1]
     except (ValueError, IndexError):
         print("Invalid region number. Please enter a valid number.")
         exit(1)
