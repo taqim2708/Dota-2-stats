@@ -35,14 +35,14 @@ if __name__ == "__main__":
 
     sorted_teams = sorted(
         teams.items(),
-        key=lambda item: sum(player["rank"] for player in item[1]) / len(item[1]),
+        key=lambda item: sum(player["rank"] for player in item[1][:2]) / 2,
     )
 
     for team_id, players in sorted_teams:
         if len(players) > 3:
             print(f"Team ID: {team_id}")
             print(
-                f"Average rank: {sum(player['rank'] for player in players) / len(players)}"
+                f"Average rank(Top 2 player only): {sum(player['rank'] for player in players[:2]) / 2}"
             )
             for player in players:
                 print(player)
