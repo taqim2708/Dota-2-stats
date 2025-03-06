@@ -38,11 +38,14 @@ if __name__ == "__main__":
         key=lambda item: sum(player["rank"] for player in item[1][:2]) / 2,
     )
 
+    n_top_players = 3
+
     for team_id, players in sorted_teams:
         if len(players) > 3:
-            print(f"Team ID: {team_id}")
+            print(f"Team: {players[0]['team_tag']}")
             print(
-                f"Average rank(Top 2 player only): {sum(player['rank'] for player in players[:2]) / 2}"
+                f"Average rank(Top {n_top_players} player only): " +
+                f"{sum(player['rank'] for player in players[:n_top_players]) / n_top_players}"
             )
             for player in players:
                 print(player)
